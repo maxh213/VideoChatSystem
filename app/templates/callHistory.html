@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+	{% if error %}
+    <h1>{{ error }}</h1>
+    {% else %}
+
+    <h1>{{ user }}'s Call History</h1>
+    
+    <table class="u-full-width">
+	  <thead>
+	    <tr>
+	      <th>Host Username</th>
+	      <th>Invitee Username</th>
+	      <th>Call Time</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for call in calls %}
+		    <tr>
+		      <td>{{ call.host }}</td>
+		      <td>{{ call.invited }}</td>
+		      <td>{{ call.timestamp }}</td>
+		    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+	{% endif %}
+{% endblock %}

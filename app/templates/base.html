@@ -1,13 +1,20 @@
 <html>
   <head>
-    {% if title %}
-    <title>{{ title }} - Video Chat</title>
+    {% if user %}
+    <title>{{ user.username }} - Video Chat</title>
     {% else %}
     <title>Welcome to Video Chat</title>
     {% endif %}
   </head>
   <body>
-    <div>Video Chat: <a href="/index">Home</a></div>
+    <div>Video Chat: <a href="/index">Home</a>
+    {% if user %}
+    <a href="/callHistory">Call History</a>
+    <a href="/logout">Logout</a>
+    {% else %}
+    <a href="/login">Login</a>
+    {% endif %}
+    </div> 
     <hr>
     {% block content %}{% endblock %}
   </body>
