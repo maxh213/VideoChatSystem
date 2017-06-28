@@ -5,6 +5,8 @@ You are part of an engineering team that was asked to prototype a simple video c
 *⋅⋅ Bonus: be able to invite other participants to join their calls 
 *.. MAKE RESPONSIVE
 *.. TESTS
+USE A DATABASE WITH REAL DATA
+EXTEND SO MORE THAN ONE USER CAN BE ADDED TO A CALL
 
 You are asked to design and implement the system based on the above spec. 
 

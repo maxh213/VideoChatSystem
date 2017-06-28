@@ -1,6 +1,10 @@
-from flask import Flask, session, render_template, redirect, url_for, request
+from flask import Flask, session, render_template, redirect, url_for, request, abort
 from app import app
 from app import controllers 
+from app import config
+
+
+#REMEMBER TO ADD A 404 PAGE
 
 @app.route('/')
 @app.route('/index')
@@ -10,7 +14,17 @@ def index():
     else:
         return render_template("index.html")
 
-@app.route('/login', methods=['GET', 'POST'])
+#TODO: MAKE WORK FOR MULTIPLE USERS
+#TODO: MAKE SURE MULTIPLE USERS CAN LOG ON AT ONCE
+#MAKE ANONYMOUS USER APPEAR IN FRONT END AS 'ANONYMOUS GUEST'
+@app.route('/call/<room_name>/<call_id>', methods = ['GET'])
+def call(room_name, call_id):
+    if 'user' in session:
+        return render_template("index.html", user=session['user'], room_name=room_name, call_id=call_id)
+    else: 
+        return render_template("index.html", room_name=room_name, call_id=call_id)
+
+@app.route('/login', methods=['GET','POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -34,8 +48,22 @@ def call_history():
         #redirect the user if they aren't logged in
         return redirect(url_for('index'))
     call_history = controllers.get_user_call_history(session['user'])
-    if call_history is None:
-        error = "You have yet to make a call with Video Chat. Return to the <a href='/index>homepage</a> to learn how to make your first call!"
-        return render_template('callHistory.html', error=error)
+    if call_history == []:
+        error = True
+        return render_template('callHistory.html', user=session['user'], error=error)
     else:
-        return render_template('callHistory.html', user=session['user']['username'], calls=call_history)
+        return render_template('callHistory.html', user=session['user'], calls=call_history)
+
+@app.route('/logCall/<user_id>/<room_name>', methods = ['GET'])
+def log_call(user_id, room_name):
+    call_id = controllers.log_new_call(user_id, room_name)
+    return call_id
+
+@app.route('/logGuestInActiveCall/<guest_user_id>/<call_id>', methods = ['GET'])
+def log_guest_in_active_call(guest_user_id, call_id):
+    no_error = controllers.update_guest_id_in_an_active_call(call_id, guest_user_id)
+    if not no_error:
+        #MAKE error that the call you're trying to access doesn't exist apparent
+        abort(500)
+    else:
+        return call_id
