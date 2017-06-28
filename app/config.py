@@ -1,1 +1,0 @@
-ANONYMOUS_USER_ID = "2"

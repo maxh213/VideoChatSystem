@@ -1,29 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 	{% if error %}
-    <h3>You have yet to make a call with Video Chat. <BR> Return to the <a href='/index'>homepage</a> to learn how to make your first call!</h3>
+    	<h3>You have yet to make a call with Video Chat. <BR> Return to the <a href='/index'>homepage</a> to learn how to make your first call!</h3>
     {% else %}
-
     <h3>{{ user.username|title }}'s Call History</h3>
     <table class="u-full-width">
 	  <thead>
 	    <tr>
-	      <th>Host</th>
-	      <th>Guest('s)</th>
-	      <th>Call Time</th>
+			<th>Host</th>
+			<th>Guest('s)</th>
+			<th>Call Time</th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	  	{% for call in calls %}
 		    <tr>
-		      <td>{{ call.host }}</td>
-		      <td>
-		      	{% for guest in call.guests %}
-		      		{{ guest }}
-		      		{{ ", " if not loop.last }}
-		      	{% endfor %}
-		      </td>
-		      <td>{{ call.timestamp }}</td>
+				<td>{{ call.host }}</td>
+				<td>
+					{% for guest in call.guests %}
+						{{ guest }}
+						{{ ", " if not loop.last }}
+					{% endfor %}
+				</td>
+				<td>{{ call.timestamp }}</td>
 		    </tr>
 	    {% endfor %}
 	  </tbody>

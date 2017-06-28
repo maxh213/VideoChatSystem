@@ -11,6 +11,12 @@ html, body {
 }
 
 h4, p, hr {
+	/*
+		This is poor practice.
+
+		This was done because I was having a difficult time overcoming some of the padding
+		in the Skeleton CSS boiler plate. If I had more time I would have opted to fix this correctly.
+	*/
 	margin:5px !important; 
 	padding:5px !important;
 }

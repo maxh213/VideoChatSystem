@@ -42,7 +42,6 @@ def log_new_call(host_id, room_name):
 	return new_call_id
 
 def update_guest_id_in_an_active_call(call_id, guest_id):
-	#TODO: MAKE SURE TO HANDLE NONE
 	call = mock_data.get_call_by_call_id(call_id)
 	if call is not None:
 		call['guest_ids'].append(guest_id)

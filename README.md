@@ -1,32 +1,43 @@
 # VideoChatSystem
-You are part of an engineering team that was asked to prototype a simple video chatting system. The users of the system should be able to: 
-*⋅⋅ have a page where they can create their own video calls 
-*⋅⋅ have a page where they can see the history of all the video calls 
-*⋅⋅ Bonus: be able to invite other participants to join their calls 
-*.. MAKE RESPONSIVE
-*.. TESTS
-USE A DATABASE WITH REAL DATA
-EXTEND SO MORE THAN ONE USER CAN BE ADDED TO A CALL
+This project is my first time using the flask framework so I would very much like to here feedback in regard to best practices or anything I could improve on.
 
-You are asked to design and implement the system based on the above spec. 
+I managed to complete the following functionality:
+* Created a system which can be logged into and keep track of multiple users logged in at once.
+* Have a page where users can create their own video calls
+* Have a page where users can see a history of video calls they participated in
+* Allow users to share a link to a video call which other users can join, where all the participants of the call get logged
 
-The implementation of the backend system should be in Python. 
-For the video chatting part you can use the appear.in Developer Javascript SDK (https://developer.appear.in/). 
+Due to the limited time I had I couldn't complete everything I wished to do so on this project, given more time I would have:
+* Replaced the mock data I was using with real data from a database.
+* Improve on the overall look of the application
+* Spent more time researching the best way to implement Flask applications
+* Add unit tests (Usually I'd make this in TDD but I had never written tests before for Flask so I didn't want to add that to the list of things to learn and risk not delivering all the functionality. This wouldn't have been an issue had I known Flask going into this project.)
+* There are a couple TODOs throughout the code which can give you an idea of what I would have liked to add given more time. They were left in more for the reader's benefit, normally I don't make a habit of leaving TODOs in code I write.
+* Added a profile page so users could invite other users through the application, not just through a link
 
-If you require a database SQLite will be sufficient - no need for complex setups. You are free to use any industry standard libraries/frameworks for the UI part.
-
+# Frameworks used:
+* Flask
+* JQuery
+* Skeleton CSS boilerplate
 
 # Requirements needed to run:
-..* Python3.5
-..* Flask
+* Python3.5
+* Flask
 
 # How to run:
-Build the database first:
+First time setup:
 ~~~~
-sqlite3 database.db < schema.sql
+pip3 install -r requirements.txt
 ~~~~
 
-Then run the sever with:
+Then run the server with:
 ~~~~
 python3 run.py
 ~~~~
+and visit localhost:5000/
+
+There are two test account users:
+* username: admin password: admin
+* username: admin2 password: admin2
+
+Accounts are not necessary for any of the functionality except checking your call history.

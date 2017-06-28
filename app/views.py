@@ -1,10 +1,13 @@
 from flask import Flask, session, render_template, redirect, url_for, request, abort
 from app import app
 from app import controllers 
-from app import config
 
-
-#REMEMBER TO ADD A 404 PAGE
+@app.errorhandler(404)
+def page_not_found(error):
+    if 'user' in session:
+        return render_template('404.html',user=session['user']), 404
+    else:
+        return render_template('404.html'), 404
 
 @app.route('/')
 @app.route('/index')
@@ -14,9 +17,6 @@ def index():
     else:
         return render_template("index.html")
 
-#TODO: MAKE WORK FOR MULTIPLE USERS
-#TODO: MAKE SURE MULTIPLE USERS CAN LOG ON AT ONCE
-#MAKE ANONYMOUS USER APPEAR IN FRONT END AS 'ANONYMOUS GUEST'
 @app.route('/call/<room_name>/<call_id>', methods = ['GET'])
 def call(room_name, call_id):
     if 'user' in session:
@@ -26,6 +26,9 @@ def call(room_name, call_id):
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    if 'user' in session:
+        #redirect the user if they are already logged in
+        return redirect(url_for('index'))
     error = None
     if request.method == 'POST':
         user = controllers.get_user_account_with_login(request.form['username'], request.form['password'])

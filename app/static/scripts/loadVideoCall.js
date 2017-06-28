@@ -2,14 +2,10 @@ $(document).ready(function(){
     var AppearIn = window.AppearIn || require('appearin-sdk');
 	var appearin = new AppearIn();
 
+	//TODO: If this is false the show a user friendly error message at the front end
 	var isWebRtcCompatible = appearin.isWebRtcCompatible();
-	//TODO: IF THIS IS FALSE ADD USER FRIENDLY ERROR MESSAGE
-	console.log(isWebRtcCompatible);
 
-	
-	//TODO: this is a flag, refactor to remove
-	//TODO: ADD THE INVITE A NEW USER TO A CALL TEXT
-
+	//TODO: the below is essentially a flag, refactor to remove
 	//if roomName is defined then this is a user sharing a call
 	if (roomName) {
 		serveExistingCall(appearin);

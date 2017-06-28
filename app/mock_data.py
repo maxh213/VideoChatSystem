@@ -4,7 +4,7 @@ import datetime
 USERS = [
 	{'id': '0', 'username': 'admin', 'password': 'admin'},
 	{'id': '1', 'username': 'admin2', 'password': 'admin2'},
-	#The below is used to represent user's who don't have an account are invited to calls
+	#The below is used to record the activity of users who don't have an account
 	{'id': '2', 'username': 'Anonymous Guest', 'password': None}
 ]
 
