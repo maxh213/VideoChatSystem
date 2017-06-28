@@ -41,3 +41,8 @@ There are two test account users:
 * username: admin2 password: admin2
 
 Accounts are not necessary for any of the functionality except checking your call history.
+
+# Support
+Do not hesitation to get in touch if you have any questions or run into any problems.
+Email: max.o.harris@outlook.com
+Phone: 07835367449
