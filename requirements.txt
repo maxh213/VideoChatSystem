@@ -14,7 +14,7 @@ SQLAlchemy==1.1.11
 urllib3==1.13.1
 virtualenv==15.0.1
 websocket-client==0.40.0
-Werkzeug==0.10.4
+Werkzeug==0.15.3
 WTForms==2.1
 xdiagnose==3.8.4.1
 xkit==0.0.0
