@@ -5,7 +5,7 @@ Flask-OAuth==0.12
 Flask-SQLAlchemy==2.2
 Flask-User==0.6.11
 Flask-WTF==0.14.2
-Jinja2==2.8
+Jinja2==2.11.3
 oauth2==1.9.0.post1
 oauthlib==1.0.3
 requests==2.10.0
